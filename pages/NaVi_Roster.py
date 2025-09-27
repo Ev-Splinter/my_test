@@ -1,16 +1,16 @@
 from conftest import browser
-from pages.NaVi_Roster import result_selector
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
-button_selector = (By.CSS_SELECTOR, '[class="block button text-center"]')
-result_selector = (By.CSS_SELECTOR, 'body > div.bgPadding > div.widthControl > div:nth-child(2) > div.contentCol > div.ranking > div:nth-child(1) > div.regional-ranking-header > div.regional-ranking-header-text')
-class TeamsButtonPage(BasePage):
+button_selector = (By.CSS_SELECTOR, '#rosterBox > div:nth-child(5) > div > div:nth-child(2)')
+result_selector = (By.CSS_SELECTOR, '#rosterBox > div:nth-child(7) > div > div.player-timeline-names > span:nth-child(7) > a')
+
+class NaviRosterPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
     def open(self):
-        self.browser.get('https://www.hltv.org/')
+        self.browser.get('https://www.hltv.org/team/4608/natus-vincere#tab-rosterBox')
 
     def button(self):
         return self.find(button_selector)
@@ -23,4 +23,3 @@ class TeamsButtonPage(BasePage):
 
     def result_text(self):
         return self.result().text
-
